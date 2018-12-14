@@ -9,6 +9,6 @@ script:
   - cmake ../mp2-lab4-queue
   - make -j
   - cd ./bin/
-  - ./test_stack --gtest_list_tests
+  - ./test_queue --gtest_list_tests
 notifications:
   email: false
