@@ -8,7 +8,6 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    setlocale(LC_NUMERIC, "en_US.UTF-8");
 
     /* -------------------------------------------- */
     int capacity;
@@ -42,8 +41,8 @@ int main()
 
     cout << "Количество поступивших в систему заданий: " << status.Total << endl;
     cout << "Количество отказов в обслуживании из-за переполнения очереди: " << (100 * status.RejectionPercentage()) << "%" << endl;
-    cout << "Среднее количество тактов выполнения задания: " << status.AverageCycles() << endl;
-    cout << "Количество тактов простоя процессора из-за отсутствия заданий: " << (100 * status.IdlePercentage()) << "%" << endl;
+    cout << "Среднее количество тактов выполнения задания: " << JobStream.AverageCycles() << endl;
+    cout << "Количество тактов простоя процессора из-за отсутствия заданий: " << (100 * JobStream.GetProc().GetStatus().IdlePercentage()) << "%" << endl;
 
     return 0;
 }

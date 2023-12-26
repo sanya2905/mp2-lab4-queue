@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 2.8)
 set(PROJECT_NAME queue)
 project(${PROJECT_NAME})
 
+add_definitions(-UUNICODE -U_UNICODE)
+
 set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE)

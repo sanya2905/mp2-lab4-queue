@@ -2,6 +2,7 @@
 #define __TJOBSTREAM__
 
 #include "TQueue.h"
+#include "TProc.h"
 
 struct TJobStreamStatus
 {
@@ -9,38 +10,31 @@ struct TJobStreamStatus
     int Completed;
     int Rejected;
 
-    int Cycles;
-    int IdleCycles;
-
-    int AverageCycles() const;
-
     double RejectionPercentage() const;
-    double IdlePercentage() const;
 };
 
 class TJobStream
 {
 private:
-    static const int IdleTask = -1;
-
     const int Intensity;
-    const int Performance;
 
     TQueue<int> Tasks;
+    TProc Proc;
 
     int Current;
     int LastTaskId;
 
     TJobStreamStatus Status;
 
-    static int Random();
-
 public:
-    TJobStream(int total, double intensity, double performance);
+    TJobStream(int total, double intensity, TProc proc);
 
     void CreateTasks();
     void RunCycle();
 
+    int AverageCycles() const;
+
+    const TProc& GetProc() const;
     const TJobStreamStatus& GetStatus() const;
 };
 
